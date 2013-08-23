@@ -122,7 +122,8 @@ public class WordDatabase {
 	{
 		opentToRead();
 		String query = "SELECT * FROM " + TABLE_NAME;
-		myCursor = myDb.rawQuery(query, new String[] {String.valueOf(id)});
+		//myCursor = myDb.rawQuery(query, new String[] {String.valueOf(id)});
+		myCursor = myDb.query(TABLE_NAME, new String[] {TABLE_ID}, "id=?" + id, null, null, null, null);
 		//Kiem tra du lieu rong hay khong
 		if (myCursor != null)
 		{
@@ -153,7 +154,8 @@ public class WordDatabase {
 		List<Word> listOfWord = new ArrayList<Word>();
 		opentToRead();
 		String query = "SELECT * FROM " + TABLE_NAME;
-		myCursor = myDb.rawQuery(query, null);
+		//myCursor = myDb.rawQuery(query, null);
+		myCursor = myDb.query(TABLE_NAME, new String[] {TABLE_ID, WORD_NAME, WORD_TYPE, WORD_MEANING}, null, null, null, null, null);
 		if (myCursor != null)
 		{
 			myCursor.moveToFirst();

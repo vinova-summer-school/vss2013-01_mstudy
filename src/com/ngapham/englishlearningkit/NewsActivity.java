@@ -32,7 +32,7 @@ public class NewsActivity extends Activity {
 	private List<String> descriptions;
 	private ListView list;
 	public String currentTitle;
-	public String currenDescription;
+	public String currentDescription;
 	
 	private List<Article> myArticles; 
 	private Article currentArticle;
@@ -172,7 +172,7 @@ public class NewsActivity extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				currentTitle = (String) titles.get(arg2);
-				currenDescription = (String) descriptions.get(arg2);
+				currentDescription = (String) descriptions.get(arg2);
 				doOpenArticle();
 			}
 		});
@@ -180,6 +180,12 @@ public class NewsActivity extends Activity {
 	public void doOpenArticle()
 	{
 		Intent myInt = new Intent(this, ArticleActivity.class);
+		//Dua du lieu vao bundle
+		Bundle myBundle = new Bundle();
+		myBundle.putString("title", currentTitle);
+		myBundle.putString("description", currentDescription);
+		myInt.putExtra("myPackage", myBundle);
+		
 		startActivity(myInt);
 	}
 }

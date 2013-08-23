@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -19,7 +20,8 @@ public class ArticleActivity extends FragmentActivity {
 	private TextView txtTitle;
 	private TextView txtDescription;
 	private Button btnLookup;
-	FragmentManager manager;
+	private Intent callerIntent;
+	//FragmentManager manager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,21 @@ public class ArticleActivity extends FragmentActivity {
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
 		txtDescription = (TextView) findViewById(R.id.txtDescription);
 		btnLookup = (Button) findViewById(R.id.btnLookup);
-		manager = getFragmentManager();
+		//manager = getFragmentManager();
 		
+//		txtTitle.setText("title here");
+//		txtDescription.setText("description here");
+		
+		//Lay ra goi bundle My Package
+		callerIntent = getIntent();
+		Bundle packageFromCaller = callerIntent.getBundleExtra("myPackage");
+		String title = packageFromCaller.getString("title");
+		txtTitle.setText((CharSequence) title);
+		String description = packageFromCaller.getString("description");
+		txtDescription.setText((CharSequence) description);
+		
+		
+		// Mo fragment
 		btnLookup.setOnClickListener(new OnClickListener() {
 
 			@Override
