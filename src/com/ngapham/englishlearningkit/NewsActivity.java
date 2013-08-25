@@ -13,8 +13,10 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -58,6 +60,10 @@ public class NewsActivity extends Activity {
 		doParseXMLFile();
 		bindData();
 		openArticle();
+		
+		WebView webview = new WebView(this);
+		 setContentView(webview);
+
 	}
 	
 	public void doParseXMLFile()
@@ -149,7 +155,7 @@ public class NewsActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, titles);
 		list.setAdapter(adapter);
 	}
-	/*//Su kien click vao 1 item de mo link bai bao tuong ung
+	//Su kien click vao 1 item de mo link bai bao tuong ung
 	public void openArticle()
 	{
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -163,8 +169,8 @@ public class NewsActivity extends Activity {
 				startActivity(i);
 			}
 		});
-	}*/
-	public void openArticle()
+	}
+	/*public void openArticle()
 	{
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -187,5 +193,5 @@ public class NewsActivity extends Activity {
 		myInt.putExtra("myPackage", myBundle);
 		
 		startActivity(myInt);
-	}
+	}*/
 }

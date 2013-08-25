@@ -2,9 +2,12 @@ package com.ngapham.englishlearningkit;
 
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +18,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+@SuppressLint("NewApi")
 public class ArticleActivity extends FragmentActivity {
 	
 	private TextView txtTitle;
@@ -48,12 +53,13 @@ public class ArticleActivity extends FragmentActivity {
 		// Mo fragment
 		btnLookup.setOnClickListener(new OnClickListener() {
 
+			@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 			@Override
 			public void onClick(View arg0) {
-				/*android.app.FragmentTransaction transaction= manager.beginTransaction();
-                transaction.add(R.id.container, new MyFragment(), "myFragment");
-                transaction.addToBackStack(null);
-                transaction.commit();*/
+				/*android.app.FragmentTransaction transaction = manager.beginTransaction();
+				transaction.add(R.id.container, new MyFragment(), "myFragment");
+				transaction.addToBackStack(null);
+				transaction.commit();*/
 			}
 			
 		});

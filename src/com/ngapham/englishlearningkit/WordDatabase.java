@@ -23,12 +23,12 @@ public class WordDatabase {
 	public static final String DATABASE_NAME = "DICTIONARY2.db";
 	public static final int DATABASE_VERSION = 1;
 	public static final String TABLE_NAME = "word";
-	public static final String TABLE_ID = "id";
+	public static final String WORD_ID = "id";
 	public static final String WORD_NAME = "name";
 	public static final String WORD_MEANING = "meaning";
 	public static final String WORD_TYPE = "type";
 	private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" +
-												  TABLE_ID + " integer primary key autoincrement, " +
+												  WORD_ID + " integer primary key autoincrement, " +
 												  WORD_NAME + " text not null, " +
 												  WORD_TYPE + " text not null, " +
 												  WORD_MEANING + " text not null);";
@@ -104,7 +104,7 @@ public class WordDatabase {
 		myValue.put(WORD_NAME, word.getName());
 		myValue.put(WORD_MEANING, word.getMeaning());
 		myValue.put(WORD_TYPE, word.getType());
-		myDb.update(TABLE_NAME, myValue, TABLE_ID + "=?", new String[] {String.valueOf(word.getId())});
+		myDb.update(TABLE_NAME, myValue, WORD_ID + "=?", new String[] {String.valueOf(word.getId())});
 		myDb.close();
 	}
 	
@@ -113,7 +113,7 @@ public class WordDatabase {
 	{
 		openToWrite();
 		myValue = new ContentValues();
-		myDb.delete(TABLE_NAME, TABLE_ID + "=?", new String[] {String.valueOf(word.getId())});
+		myDb.delete(TABLE_NAME, WORD_ID + "=?", new String[] {String.valueOf(word.getId())});
 		myDb.close();
 	}
 	
@@ -123,7 +123,7 @@ public class WordDatabase {
 		opentToRead();
 		String query = "SELECT * FROM " + TABLE_NAME;
 		//myCursor = myDb.rawQuery(query, new String[] {String.valueOf(id)});
-		myCursor = myDb.query(TABLE_NAME, new String[] {TABLE_ID}, "id=?" + id, null, null, null, null);
+		myCursor = myDb.query(TABLE_NAME, new String[] {WORD_ID}, "id=?" + id, null, null, null, null);
 		//Kiem tra du lieu rong hay khong
 		if (myCursor != null)
 		{
@@ -138,7 +138,8 @@ public class WordDatabase {
 		{
 			opentToRead();
 			String query = "SELECT * FROM " + TABLE_NAME;
-			myCursor = myDb.rawQuery(query, new String[] {name});
+			//myCursor = myDb.rawQuery(query, new String[] {name});
+			myCursor = myDb.query(TABLE_NAME, new String[] {WORD_ID, WORD_NAME, WORD_TYPE, WORD_MEANING}, "name='" + name + "'", null, null, null, null);
 			//Kiem tra du lieu rong hay khong
 			if (myCursor != null)
 			{
@@ -155,7 +156,7 @@ public class WordDatabase {
 		opentToRead();
 		String query = "SELECT * FROM " + TABLE_NAME;
 		//myCursor = myDb.rawQuery(query, null);
-		myCursor = myDb.query(TABLE_NAME, new String[] {TABLE_ID, WORD_NAME, WORD_TYPE, WORD_MEANING}, null, null, null, null, null);
+		myCursor = myDb.query(TABLE_NAME, new String[] {WORD_ID, WORD_NAME, WORD_TYPE, WORD_MEANING}, null, null, null, null, null);
 		if (myCursor != null)
 		{
 			myCursor.moveToFirst();

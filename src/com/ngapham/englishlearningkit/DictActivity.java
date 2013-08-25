@@ -41,6 +41,7 @@ public class DictActivity extends Activity {
 		
 		listWordString = new ArrayList<String>();
 		listSuggestion = new ArrayList<String>();
+		listSelection = new ArrayList<String>();
 		
 		listWord = myDbAdapter.getAllWord();
 		for (Word word : listWord)
@@ -58,14 +59,15 @@ public class DictActivity extends Activity {
 					long rowID) {
 				selectionWord = (String) parent.getItemAtPosition(position);
 				Log.i("Selection word ------>", selectionWord);
-				listSelection = new ArrayList<String>();
-				listSelection.add(myDbAdapter.getWord(selectionWord).toString());
+				
+				listSelection.add(myDbAdapter.getWord(selectionWord.toLowerCase().trim()).toString());
+				if (listSelection != null) {
+					bindDataSelection();
+				}
 			}
 			
 		});
-		if (listSelection != null) {
-			bindDataSelection();
-		}
+		
 	}
 	
 	//Thiet lap ArrayAdapter de bind data
