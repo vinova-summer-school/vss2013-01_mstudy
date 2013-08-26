@@ -21,10 +21,10 @@ import android.widget.TextView;
 public class DictActivity extends Activity {
 	
 	private AutoCompleteTextView txtSearch;
-	private List<Word> listWord;		//Danh sach tu vung lay tu CSDL tu dien
+	private List<Word> listWord;			//Danh sach tu vung lay tu CSDL tu dien
 	private List<String> listWordString;	//Danh sach tu dang string
 	private List<String> listSuggestion;	//Danh sach suggestion cho txtSearch
-	private List<String> listSelection;
+	private List<String> listSelection;		//Danh sach khi click vao item cua autocomplete textview
 	private String selectionWord;
 	private WordDatabase myDbAdapter;
 	private ListView list;
@@ -49,23 +49,24 @@ public class DictActivity extends Activity {
 			listWordString.add(word.toString());
 			listSuggestion.add(word.getName());
 		}
-		
-		bindData();
+		if (txtSearch.getText().toString() != null)
+			bindData();
 		
 		txtSearch.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long rowID) {
+				listSelection.clear();
 				selectionWord = (String) parent.getItemAtPosition(position);
 				Log.i("Selection word ------>", selectionWord);
 				
 				listSelection.add(myDbAdapter.getWord(selectionWord.toLowerCase().trim()).toString());
 				if (listSelection != null) {
 					bindDataSelection();
+					
 				}
 			}
-			
 		});
 		
 	}

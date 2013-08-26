@@ -123,7 +123,7 @@ public class WordDatabase {
 		opentToRead();
 		String query = "SELECT * FROM " + TABLE_NAME;
 		//myCursor = myDb.rawQuery(query, new String[] {String.valueOf(id)});
-		myCursor = myDb.query(TABLE_NAME, new String[] {WORD_ID}, "id=?" + id, null, null, null, null);
+		myCursor = myDb.query(TABLE_NAME, new String[] {WORD_ID, WORD_NAME, WORD_TYPE, WORD_MEANING}, "id=" + id, null, null, null, null);
 		//Kiem tra du lieu rong hay khong
 		if (myCursor != null)
 		{
