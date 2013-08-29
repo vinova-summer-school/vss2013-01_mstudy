@@ -38,9 +38,6 @@ public class ArticleActivity extends FragmentActivity {
 		btnLookup = (Button) findViewById(R.id.btnLookup);
 		//manager = getFragmentManager();
 		
-//		txtTitle.setText("title here");
-//		txtDescription.setText("description here");
-		
 		//Lay ra goi bundle My Package
 		callerIntent = getIntent();
 		Bundle packageFromCaller = callerIntent.getBundleExtra("myPackage");

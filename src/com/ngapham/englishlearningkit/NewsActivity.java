@@ -11,10 +11,15 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import RssReader.Article;
+import RssReader.RssFragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.AdapterView;
@@ -27,7 +32,7 @@ import com.androidquery.callback.AjaxStatus;
 import com.androidquery.util.XmlDom;
 import com.ngapham.englishlearningkit.R;
 
-public class NewsActivity extends Activity {
+public class NewsActivity extends FragmentActivity {
 	
 	private List<String> titles;
 	private List<String> links;
@@ -51,21 +56,32 @@ public class NewsActivity extends Activity {
 		links = new ArrayList<String>();
 		descriptions = new ArrayList<String>();
 		
-		myArticles = new ArrayList<Article>();
+		/*myArticles = new ArrayList<Article>();
 		// initialize AQuery
-		aq = new AQuery(this);
+		aq = new AQuery(this);*/
 		
-		list = (ListView) findViewById(R.id.list);
+		//list = (ListView) findViewById(R.id.list);
 		
-		doParseXMLFile();
-		bindData();
-		openArticle();
-		
-		WebView webview = new WebView(this);
-		 setContentView(webview);
-
+		if (savedInstanceState == null)
+		{
+			addRssFragment();
+		}
+	}
+	//add RssFragment vao activity
+	private void addRssFragment() {
+		FragmentManager fManager = getSupportFragmentManager();
+		FragmentTransaction fTransaction = fManager.beginTransaction();
+		RssFragment fragment = new RssFragment();
+		fTransaction.add(R.id.fragment_container, fragment);
+		fTransaction.commit();
 	}
 	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putBoolean("fragment added", true);
+	}
+	/*
 	public void doParseXMLFile()
 	{
 		try {
@@ -76,11 +92,11 @@ public class NewsActivity extends Activity {
 		    
 		    //Lay XML tu mot input stream
 		    xpp.setInput(connect(url), "UTF_8");
-		    /* De parse XML content phai tim den cac <title>, <link> trong cac <item>
+		     De parse XML content phai tim den cac <title>, <link> trong cac <item>
 		     * Tuy nhien trong the <channel> cung co <title>,
 		     * De bo qua <title> trong <channel> va tim den <title> trong <item>
 		     * Ta su dung bien danh dau insideItem
-		     */
+		     
 		    boolean insideItem = false;
 		    
 		    int eventType = xpp.getEventType();		    
@@ -129,8 +145,8 @@ public class NewsActivity extends Activity {
 		{
 			return null;
 		}
-	}
-	
+	}*/
+	/*
 	public void getRssFeed(String url) {
 		aq.ajax(url, XmlDom.class, new AjaxCallback<XmlDom>(){
 			@Override
@@ -148,28 +164,28 @@ public class NewsActivity extends Activity {
 			}
 		});
 		
-	}
-	
+	}*/
+	/*
 	public void bindData()
 	{
 		ArrayAdapter<String> adapter = new ArrayAdapter<String> (this, android.R.layout.simple_list_item_1, titles);
 		list.setAdapter(adapter);
-	}
-	//Su kien click vao 1 item de mo link bai bao tuong ung
-	public void openArticle()
-	{
-		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				String urlLink = (String) links.get(arg2);
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(urlLink));
-				startActivity(i);
-			}
-		});
-	}
+	}*/
+//	//Su kien click vao 1 item de mo link bai bao tuong ung
+//	public void openArticle()
+//	{
+//		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//			@Override
+//			public void onItemClick(AdapterView<?> arg0, View arg1,
+//					int arg2, long arg3) {
+//				String urlLink = (String) links.get(arg2);
+//				Intent i = new Intent(Intent.ACTION_VIEW);
+//				i.setData(Uri.parse(urlLink));
+//				startActivity(i);
+//			}
+//		});
+//	}
 	/*public void openArticle()
 	{
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -194,4 +210,5 @@ public class NewsActivity extends Activity {
 		
 		startActivity(myInt);
 	}*/
+	
 }
