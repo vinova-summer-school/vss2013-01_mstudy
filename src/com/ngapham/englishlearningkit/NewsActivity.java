@@ -1,66 +1,30 @@
 package com.ngapham.englishlearningkit;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import RssReader.Article;
-import RssReader.RssFragment;
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.androidquery.AQuery;
-import com.androidquery.callback.AjaxCallback;
-import com.androidquery.callback.AjaxStatus;
 import com.androidquery.util.XmlDom;
-import com.ngapham.englishlearningkit.R;
 
 public class NewsActivity extends FragmentActivity {
 	
-	private List<String> titles;
-	private List<String> links;
-	private List<String> descriptions;
-	private ListView list;
 	public String currentTitle;
 	public String currentDescription;
-	
-	private List<Article> myArticles; 
-	private Article currentArticle;
-	private List<XmlDom> items;
-	private AQuery aq;
-	//private AdapterView.OnItemClickListener listener;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
 		
-		titles = new ArrayList<String>();
-		links = new ArrayList<String>();
-		descriptions = new ArrayList<String>();
-		
-		/*myArticles = new ArrayList<Article>();
-		// initialize AQuery
-		aq = new AQuery(this);*/
-		
-		//list = (ListView) findViewById(R.id.list);
+		new ArrayList<String>();
+		new ArrayList<String>();
+		new ArrayList<String>();
 		
 		if (savedInstanceState == null)
 		{
@@ -79,7 +43,7 @@ public class NewsActivity extends FragmentActivity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putBoolean("fragment added", true);
+		outState.putBoolean("fragment_added", true);
 	}
 	/*
 	public void doParseXMLFile()

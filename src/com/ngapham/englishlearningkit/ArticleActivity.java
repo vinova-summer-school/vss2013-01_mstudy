@@ -34,17 +34,17 @@ public class ArticleActivity extends FragmentActivity {
 		setContentView(R.layout.article);
 		
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
-		txtDescription = (TextView) findViewById(R.id.txtDescription);
-		btnLookup = (Button) findViewById(R.id.btnLookup);
+//		txtDescription = (TextView) findViewById(R.id.txtDescription);
+//		btnLookup = (Button) findViewById(R.id.btnLookup);
 		//manager = getFragmentManager();
 		
-		//Lay ra goi bundle My Package
+		/*//Lay ra goi bundle My Package
 		callerIntent = getIntent();
 		Bundle packageFromCaller = callerIntent.getBundleExtra("myPackage");
 		String title = packageFromCaller.getString("title");
 		txtTitle.setText((CharSequence) title);
 		String description = packageFromCaller.getString("description");
-		txtDescription.setText((CharSequence) description);
+		txtDescription.setText((CharSequence) description);*/
 		
 		
 		// Mo fragment

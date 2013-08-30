@@ -5,6 +5,11 @@ public class Article {
 	private String description;
 	private String link;
 	
+	public Article (String title, String link)
+	{
+		this.title = title;
+		this.link = link;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -23,6 +28,4 @@ public class Article {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	
-	
 }
