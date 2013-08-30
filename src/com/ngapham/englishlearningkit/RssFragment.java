@@ -16,7 +16,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class RssFragment extends Fragment{
+public class RssFragment extends Fragment {
 	
 	private ListView list;
 	private View view;
@@ -80,12 +80,21 @@ public class RssFragment extends Fragment{
 					int position, long getID) {
 				RssAdapter adapter = (RssAdapter) parent.getAdapter();
 				Article currentArticle = (Article) adapter.getItem(position);
-				String urlLink = currentArticle.getLink();
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(urlLink));
-				startActivity(i);
+				
+				Intent intent = new Intent(getActivity(), ArticleWebViewActivity.class);
+				intent.putExtra("myLink", currentArticle.getLink());
+			    startActivity(intent);
 			}
 		});
+	}
+	public void startIntent()
+	{
+		Intent intent = new Intent(getActivity(), ArticleWebViewActivity.class);
+		Bundle bundle = new Bundle();
+		//bundle.putString("link", currentArticle.getLink());
+		intent.putExtra("myPackage", bundle);
+	    startActivity(intent);
+	
 	}
 /*
 	@Override

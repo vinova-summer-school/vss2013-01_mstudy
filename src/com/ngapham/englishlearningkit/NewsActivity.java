@@ -22,10 +22,6 @@ public class NewsActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
 		
-		new ArrayList<String>();
-		new ArrayList<String>();
-		new ArrayList<String>();
-		
 		if (savedInstanceState == null)
 		{
 			addRssFragment();
