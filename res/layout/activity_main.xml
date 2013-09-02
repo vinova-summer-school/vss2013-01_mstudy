@@ -8,48 +8,82 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <ImageView
-        android:id="@+id/imgLogo"
+    <TextView
+        android:id="@+id/txtNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/main_logo" />
+        android:layout_alignRight="@+id/imgNews"
+        android:layout_below="@+id/imgNews"
+        android:layout_marginRight="22dp"
+        android:text="News" />
+
+    <TextView
+        android:id="@+id/txtDict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtNews"
+        android:layout_alignBottom="@+id/txtNews"
+        android:layout_alignRight="@+id/imgDict"
+        android:text="Dictionary" />
+
+    <TextView
+        android:id="@+id/txtPodcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/txtNews"
+        android:layout_below="@+id/imgPodcast"
+        android:text="Podcast" />
+
+    <TextView
+        android:id="@+id/txtSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPodcast"
+        android:layout_alignBottom="@+id/txtPodcast"
+        android:layout_alignLeft="@+id/txtDict"
+        android:text="Setting" />
 
     <ImageView
         android:id="@+id/imgPodcast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imgNews"
-        android:layout_below="@+id/imgNews"
-        android:layout_marginTop="48dp"
+        android:layout_alignTop="@+id/imgSetting"
         android:src="@drawable/podcast" />
 
     <ImageView
         android:id="@+id/imgNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imgLogo"
+        android:layout_alignParentLeft="true"
         android:layout_below="@+id/imgLogo"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="36dp"
         android:src="@drawable/news" />
 
     <ImageView
         android:id="@+id/imgDict"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/imgLogo"
-        android:layout_alignTop="@+id/imgNews"
-        android:layout_marginRight="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@+id/txtNews"
         android:src="@drawable/dictionary2" />
 
     <ImageView
         android:id="@+id/imgSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imgDict"
-        android:layout_alignTop="@+id/imgPodcast"
+        android:layout_alignRight="@+id/txtDict"
+        android:layout_below="@+id/txtDict"
+        android:layout_marginTop="40dp"
         android:src="@drawable/setting" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/mstudy_logo" />
 
 </RelativeLayout>

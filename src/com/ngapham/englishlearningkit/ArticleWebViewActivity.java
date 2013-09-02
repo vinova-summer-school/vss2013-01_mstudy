@@ -15,7 +15,6 @@ public class ArticleWebViewActivity extends Activity {
 		setContentView(R.layout.article_webview);
 		
 		Intent callerIntent = getIntent();
-		Bundle packageFromCaller = callerIntent.getBundleExtra("myPackage");
 		url = callerIntent.getStringExtra("myLink");
 		Log.i("url", url);
 		
